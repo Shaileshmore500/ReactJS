@@ -1,0 +1,19 @@
+.main-container{
+  width: 350px;
+    border: 1px solid;
+    padding: 9px;
+}
+.btn_but
+{
+  float: right;
+}
+.li_item{
+  border-bottom: 1px solid #8b98b3 !important;
+    margin: 1px;
+    font-weight: 600;
+    font-size: x-large;
+    text-align: justify;
+}
+.li_item:hover{
+  background-color: #8b98b3;
+}
