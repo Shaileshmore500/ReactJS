@@ -5,10 +5,13 @@ import Error from './components/Error'
 import Container from './components/Container'
 import Input from './components/Input'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState } from 'react'
 
 function App() {
 
-  var arr = ["Apple", "Banana", "coconut", "Jack-Fruit"];
+
+  var [arr, setArr] = useState([]);
+
   function btncliked() {
     alert(123)
   }
@@ -19,6 +22,16 @@ function App() {
     alert(e.target.value)
 
   }
+  function changeHandler(event) {
+    alert(event.target.value)
+  }
+
+  function keyDownHandler(event) {
+    debugger
+    if (event.key === "Enter" && !arr.includes(event.target.value))
+      setArr([...arr, event.target.value])
+
+  }
 
   return (
     <center>
@@ -26,7 +39,7 @@ function App() {
 
 
         <h1>Fruits</h1>
-        <Input></Input>
+        <Input keyDownHandler={keyDownHandler} />
         <Error items={arr}></Error>
         <List items={arr}></List>
       </Container>
@@ -35,9 +48,9 @@ function App() {
         <div style={{ width: '100%', display: 'grid' }}>
           <button type="button" onClick={btncliked} className="btn btn-primary">Primary</button>
           <button type="button" onClick={() => btncliked2(12123123)} className="btn btn-secondary">Secondary</button>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" onChange={(event) => inputChanged(event)} class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">@</span>
+            <input type="text" onChange={(event) => inputChanged(event)} className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
           </div>
           <button type="button" className="btn btn-danger">Danger</button>
           <button type="button" className="btn btn-warning">Warning</button>
